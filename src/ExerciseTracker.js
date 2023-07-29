@@ -47,6 +47,8 @@ const ExerciseTracker = () => {
 
   const handleExerciseUpdate = async (exerciseId, exerciseData) => {
     try {
+      console.log("update button pressed!");
+
       const response = await axios.put(
         `/api/v1/exercises/exercise/${exerciseId}`,
         exerciseData
@@ -63,6 +65,7 @@ const ExerciseTracker = () => {
 
   const handleExerciseDelete = async (exerciseId) => {
     try {
+      console.log("delete button pressed!");
       await axios.delete(`/api/v1/exercises/${exerciseId}`);
       const updatedExercises = exercises.filter(
         (exercise) => exercise.id !== exerciseId
@@ -87,14 +90,19 @@ const ExerciseTracker = () => {
                 <ExerciseList
                   exercises={exercises}
                   onSelect={handleExerciseSelect}
+                  exercise={selectedExercise}
+                  onUpdate={handleExerciseUpdate}
+                  onDelete={handleExerciseDelete}
                 />
               }
             />
-          
-            <Route path="/create" element={ <ExerciseForm onCreate={handleExerciseCreate} />}/>
-             
+
+            <Route
+              path="/create"
+              element={<ExerciseForm onCreate={handleExerciseCreate} />}
+            />
           </Routes>
-          
+
           {/* <div className="exercise-details">
             {selectedExercise ? (
               <ExerciseView

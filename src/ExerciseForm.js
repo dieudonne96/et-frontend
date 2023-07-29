@@ -78,31 +78,6 @@ const ExerciseForm = ({ onCreate }) => {
         Submit
       </Button>
     </Form>
-
-    // <form onSubmit={handleSubmit}>
-    //   <h2>Create Exercise</h2>
-    //   <label>
-    //     Name of Exercise:
-    //     <input type="text" value={nameOfExercise} onChange={(e) => setNameOfExercise(e.target.value)} />
-    //   </label>
-    //   <label>
-    //     Description:
-    //     <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-    //   </label>
-    //   <label>
-    //     Duration:
-    //     <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
-    //   </label>
-    //   <label>
-    //     Number of Sets:
-    //     <input type="number" value={numberOfSets} onChange={(e) => setNumberOfSets(parseInt(e.target.value))} />
-    //   </label>
-    //   <label>
-    //     Number of Reps:
-    //     <input type="number" value={numberOfReps} onChange={(e) => setNumberOfReps(parseInt(e.target.value))} />
-    //   </label>
-    //   <button type="submit">Create</button>
-    // </form>
   );
 };
 

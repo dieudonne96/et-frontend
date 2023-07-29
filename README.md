@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Exercise Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Exercise Tracker App is a simple web application that allows users to track their exercise routines. It provides functionalities to create, view, update, and delete exercise entries.
 
-## Available Scripts
+![Exercise Tracker Screenshot](screenshot.png)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- View a list of exercises with details such as name, description, duration, number of sets, number of reps, and creation timestamp.
+- Create new exercise entries with the required details.
+- View and update the details of existing exercises.
+- Delete exercises from the list.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React: A JavaScript library for building user interfaces.
+- React Router: For handling client-side routing.
+- Bootstrap: For styling the user interface.
+- Axios: For making HTTP requests to the backend API.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/exercise-tracker.git
+   ```
 
-### `npm run build`
+2. Navigate to the project directory:
+   ```
+   cd exercise-tracker
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
+   ```
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Backend
 
-### `npm run eject`
+The frontend of this app communicates with a RESTful API backend. The backend provides endpoints for managing exercises and their details. The API documentation can be found [here](link-to-api-docs).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Make sure to set the appropriate API base URL in the `axios` requests to interact with the backend. You can configure it in the `axios.defaults.baseURL` in the `ExerciseTracker` component.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Launch the application by running `npm start` in the project directory.
+2. Upon starting the app, you will see a list of exercises (if any) on the home page.
+3. To add a new exercise, click on the "Create Exercise" button and fill in the required details in the form.
+4. To update an existing exercise, click on the exercise card and make the necessary changes in the update form.
+5. To delete an exercise, click on the "Delete" button on the exercise card.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions to this project are welcome. If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the [MIT License](LICENSE).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
