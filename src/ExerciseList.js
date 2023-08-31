@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -25,7 +27,7 @@ class ExerciseList extends Component {
   };
 
   render() {
-    const { exercises, onSelect, onUpdate, onDelete } = this.props;
+    const { exercises, onSelect, onDelete } = this.props;
 
     const sortedExercises = [...exercises].sort(
       (a, b) => new Date(b.timeCreated) - new Date(a.timeCreated)
@@ -35,7 +37,7 @@ class ExerciseList extends Component {
       updateButton: {
         backgroundColor: "green",
         color: "white",
-        marginRight: "10px", // Add a small gap between the buttons
+        marginRight: "10px", // small gap between the buttons
       },
       deleteButton: {
         backgroundColor: "red",
@@ -43,11 +45,29 @@ class ExerciseList extends Component {
       },
     };
 
+    const setData = (exercise) => {
+      console.log(exercise);
+      let {
+        id,
+        nameOfExercise,
+        description,
+        duration,
+        numberOfSets,
+        numberOfReps,
+      } = exercise;
+      localStorage.setItem("ID", id);
+      localStorage.setItem("Name of Exercise", nameOfExercise);
+      localStorage.setItem("Description", description);
+      localStorage.setItem("Duration", duration);
+      localStorage.setItem("Number of Sets", numberOfSets);
+      localStorage.setItem("Number of Reps", numberOfReps);
+    };
+
     return (
       <div>
-        {sortedExercises.map((exercise) => (
+        {sortedExercises.map((exercise, index) => (
           <div
-            key={exercise.id}
+            key={index}
             className="exercise-card"
             onClick={() => onSelect(exercise)}
           >
@@ -64,13 +84,15 @@ class ExerciseList extends Component {
                   Duration: {exercise.duration} | Sets: {exercise.numberOfSets}{" "}
                   | Reps: {exercise.numberOfReps}
                 </Card.Text>
-                <Button
-                  onClick={() => onUpdate(exercise.id, exercise)}
-                  variant="primary"
-                  style={buttonStyles.updateButton}
-                >
-                  Update
-                </Button>
+                <Link to={"/update/:"}>
+                  <Button
+                    onClick={() => setData(exercise)}
+                    variant="primary"
+                    style={buttonStyles.updateButton}
+                  >
+                    Update
+                  </Button>
+                </Link>
                 <Button
                   onClick={() => onDelete(exercise.id)}
                   variant="primary"

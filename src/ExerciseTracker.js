@@ -1,14 +1,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import ExerciseList from "./ExerciseList";
-import ExerciseView from "./ExerciseView";
 import ExerciseForm from "./ExerciseForm";
 import NavBar from "./NavBar";
+import ExerciseUpdate from "./ExerciseUpdate";
 
 const ExerciseTracker = () => {
   const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState(null);
+  // const [selectedExerciseForUpdate, setSelectedExerciseForUpdate] =
+  //   useState(null);
+
+  // redirect
+  // const navigateTo = useNavigate();
+
+  // {
+  //   selectedExerciseForUpdate && (
+  //     <ExerciseUpdateForm
+  //       exercise={selectedExerciseForUpdate}
+  //       onUpdate={handleExerciseUpdate}
+  //     />
+  //   );
+  // }
 
   useEffect(() => {
     fetchExercises();
@@ -23,6 +41,7 @@ const ExerciseTracker = () => {
     }
   };
 
+  // currently not being used
   const fetchExercise = async (exerciseId) => {
     try {
       const response = await axios.get(`/api/v1/exercises/${exerciseId}`);
@@ -34,21 +53,22 @@ const ExerciseTracker = () => {
 
   const handleExerciseSelect = (exercise) => {
     setSelectedExercise(exercise);
+    // setSelectedExerciseForUpdate(null);
   };
 
   const handleExerciseCreate = async (exerciseData) => {
     try {
       const response = await axios.post("/api/v1/exercises", exerciseData);
       setExercises([...exercises, response.data]);
+      // navigateTo("/"); // navigate back to home page after creation
     } catch (error) {
       console.error("Error creating exercise:", error);
     }
   };
 
+  // currently not being used
   const handleExerciseUpdate = async (exerciseId, exerciseData) => {
     try {
-      console.log("update button pressed!");
-
       const response = await axios.put(
         `/api/v1/exercises/exercise/${exerciseId}`,
         exerciseData
@@ -65,11 +85,10 @@ const ExerciseTracker = () => {
 
   const handleExerciseDelete = async (exerciseId) => {
     try {
-      console.log("delete button pressed!");
       await axios.delete(`/api/v1/exercises/${exerciseId}`);
-      const updatedExercises = exercises.filter(
-        (exercise) => exercise.id !== exerciseId
-      );
+      const updatedExercises = exercises.filter((exercise) => {
+        return exercise.id !== exerciseId;
+      });
       setExercises(updatedExercises);
       setSelectedExercise(null);
     } catch (error) {
@@ -101,19 +120,12 @@ const ExerciseTracker = () => {
               path="/create"
               element={<ExerciseForm onCreate={handleExerciseCreate} />}
             />
-          </Routes>
 
-          {/* <div className="exercise-details">
-            {selectedExercise ? (
-              <ExerciseView
-                exercise={selectedExercise}
-                onUpdate={handleExerciseUpdate}
-                onDelete={handleExerciseDelete}
-              />
-            ) : (
-              <ExerciseForm onCreate={handleExerciseCreate} />
-            )}
-          </div> */}
+            <Route
+              path="/update/:"
+              element={<ExerciseUpdate onUpdate={handleExerciseUpdate} />}
+            />
+          </Routes>
         </div>
       </div>
     </Router>
