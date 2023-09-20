@@ -42,7 +42,7 @@ The Exercise Tracker App is a simple web application that allows users to track 
 
 ## API Backend
 
-The frontend of this app communicates with a RESTful API backend. The backend provides endpoints for managing exercises and their details. The API documentation can be found [here](https://github.com/dieudonne96/exercisetrackerjava).
+The frontend of this app communicates with a RESTful API backend, powered by Java and Spring Boot. The backend provides endpoints for managing exercises and their details. The API documentation can be found [here](https://github.com/dieudonne96/exercisetrackerjava).
 
 Make sure to set the appropriate API base URL in the `axios` requests to interact with the backend. You can configure it in the `axios.defaults.baseURL` in the `ExerciseTracker` component.
 
